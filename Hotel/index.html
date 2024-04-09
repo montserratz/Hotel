@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Hazbin</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+// Hotel Hazbin
+
+var senha = 2678;
+var continuar = true;
+var continuar2 = true;
+gratuidades = 0;
+meias = 0 
+
+alert("Bem vindo ao Hotel Hazbin!");
+var nome = prompt("Insira seu nome de usuário:");
+
+var confsenha = prompt("Insira sua senha:");
+
+while(confsenha != senha){
+    var confsenha = prompt("Senha incorreta insira novamente:");
+}
+
+
+alert("Bem vindo ao Hotel Hazbin, "+ nome +". É um imenso prazer ter você por aqui!")
+
+function Inicio(){
+    var escolha = parseInt(prompt("Escolha uma opção: 1) Reservar um quarto\n2) Sair"))
+
+    switch(escolha){
+        case 1:
+        reserva();
+        break;
+
+    
+        case 2:
+        alert("Muito obrigado e até logo, " + nome + "!.");
+        sair();
+        break;
+    }
+
+
+
+
+
+
+}
+
+function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				window.close();
+			} else {
+				inicio();
+			}
+		}
+
+
+function reserva(){
+
+    var quartos = [ ];
+    var valorTotal = 0
+
+
+    var ValDia = parseFloat(prompt("Qual o valor padrão da diária?"));
+
+    while (ValDia <= 0){
+        alert("Valor inválido, " + nome);
+        var ValDia = parseFloat(prompt("Digite novamente o valor padrão da diária:"));
+    }
+
+    while(continuar2){
+
+       
+
+        var nomeHosp = prompt("Qual o nome do hóspede? ");
+
+    
+
+        var idade = parseInt(prompt("Qual a idade do Hóspede?"));
+
+        if(idade <= 6){
+            alert(nome + " cadastrada(o) com sucesso. " + nome + " Possui gratuidade");
+            gratuidades++
+
+        } else if(idade >= 60){
+            alert(nome + " cadastrada(o) com sucesso. " + nome + " Paga meia");
+            meias++
+            valorTotal += ValDia / 2
+
+        }else{
+            alert(nome + " cadastrada(o) com sucesso.");
+            valorTotal += ValDia
+        }
+
+
+        var confirmacao = prompt("Digite PARE se quiser sair. se deseja continuar de enter");
+
+        if(confirmacao == 'PARE'){
+        alert( nome + ", o valor total das hospedagens é de $" + valorTotal + "\nA quantidade de gratuidades foi de " + gratuidades + "\nA quantidade de meias foi de " + meias);
+            break;
+        }
+
+    }
+    
+   
+   
+
+
+    var QuantDia = parseInt(prompt("Quantas diárias serão necessárias?  "));
+
+    while (QuantDia <= 0 || QuantDia > 30){
+        alert("Valor inválido, " + nome);
+        var QuantDia = parseInt(prompt("Digite novamente quantas diárias serão necessárias:"));
+    }
+
+   
+    var QuantXvaldia = QuantDia*valorTotal;
+
+    alert("O valor de " + QuantDia +" dias de hospedagem é de " + QuantXvaldia);
+
+
+
+    var escolhaQuarto = parseInt(prompt("Qual o quarto para reserva? (1 - 20)?"))
+
+    while(escolhaQuarto > 20 || escolhaQuarto < 1){
+        alert("Opção inválida. Insira um valor de (1-20)");
+        var escolhaQuarto = parseInt(prompt("Insira novamente qual o quarto para reserva? (1 - 20)?"))
+    }
+
+    while(continuar){
+    if (quartos.includes(escolhaQuarto)) {
+        alert("Quarto está ocupado. Escolha outro.")
+        var escolhaQuarto = parseInt(prompt("Qual o quarto para reserva? (1 - 20)?"))
+    } else {
+        quartos.push(escolhaQuarto);
+        alert("Quarto Livre.");
+        continuar = false;
+    }
+
+    }
+
+    var confirmaReserva = prompt( nome + ", você confirma a hospedagem para " + nomeHosp +" por " + QuantDia + " dias para o quarto " + escolhaQuarto + " por " + QuantXvaldia +"$ ? \nS/N?");
+
+    if (confirmaReserva = 'S'){
+        alert(nome + ", reserva efetudada para " + nomeHosp +"! por " + QuantDia + " dias para o quarto " + escolhaQuarto + " por " + QuantXvaldia +"$");
+        Inicio();
+    }else {
+        Inicio();
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Inicio()
+
+
+
+
+</script>
